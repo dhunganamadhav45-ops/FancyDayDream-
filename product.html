@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fancy Day Dream | Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Inter:wght@300;400;500;600&family=Mukta:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .shop-layout { display: grid; grid-template-columns: 240px 1fr; gap: 60px; align-items: start; }
+        @media (max-width: 900px) { .shop-layout { grid-template-columns: 1fr; } }
+        
+        .filter-group { padding-bottom: 30px; margin-bottom: 30px; border-bottom: 1px solid var(--gray-200); }
+        .filter-title { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; font-weight: 700; color: var(--color-secondary); }
+        .filter-checkbox { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; cursor: pointer; font-size: 0.9rem; color: var(--gray-400); transition: var(--transition-smooth); }
+        .filter-checkbox:hover { color: var(--color-secondary); }
+        .filter-checkbox input { appearance: none; -webkit-appearance: none; width: 16px; height: 16px; border: 1px solid var(--gray-400); outline: none; cursor: pointer; transition: var(--transition-smooth); }
+        .filter-checkbox input:checked { background: var(--color-secondary); border-color: var(--color-secondary); }
+        
+        .size-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+        .size-btn { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--gray-200); background: var(--color-neutral); color: var(--gray-400); font-weight: 600; cursor: pointer; transition: var(--transition-smooth); }
+        .size-btn:hover, .size-btn.active { border-color: var(--color-secondary); color: var(--color-secondary); }
+        
+        .color-filter-grid { display: flex; gap: 12px; }
+        .color-filter-btn { width: 24px; height: 24px; border-radius: 50%; border: none; cursor: pointer; transition: transform 0.2s ease; border: 1px solid var(--gray-200); }
+        .color-filter-btn:hover { transform: scale(1.15); box-shadow: 0 0 0 2px var(--color-accent); }
+        
+        .shop-topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid var(--gray-200); }
+        .shop-results { font-size: 0.85rem; color: var(--gray-400); }
+        .sort-select { padding: 8px 10px; border: 1px solid var(--gray-200); background: var(--color-neutral); font-size: 0.85rem; font-family: var(--font-body); color: var(--color-secondary); cursor: pointer; outline: none; }
+        
+        .quick-add-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px 10px; background: linear-gradient(to top, rgba(17,17,17,0.95), transparent); transform: translateY(100%); opacity: 0; transition: var(--transition-smooth); z-index: 5; pointer-events: none; }
+        .product-card:hover .quick-add-overlay { transform: translateY(0); opacity: 1; pointer-events: auto; }
+        
+        .btn-card { padding: 12px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; justify-content: center; width: 100%; border: none; cursor: pointer; transition: var(--transition-smooth); text-decoration: none; }
+        .btn-card.primary { background: var(--color-primary); color: var(--color-neutral); }
+        .btn-card.primary:hover { background: var(--color-accent); color: var(--color-secondary); }
+        .btn-card.secondary { background: transparent; border: 1px solid var(--color-neutral); color: var(--color-neutral); }
+        .btn-card.secondary:hover { background: var(--color-neutral); color: var(--color-secondary); }
+
+    </style>
+</head>
+<body>
+
+    <!-- TRUST TOP BAR -->
+    <div class="top-bar">
+        CASH ON DELIVERY (COD) AVAILABLE <span>100% QUALITY GUARANTEED</span>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo" style="text-decoration: none;">
+                <span class="brand-logo-text" style="font-family: 'Inter', sans-serif; font-size: 1.3rem; font-weight: 900; color: var(--color-secondary); letter-spacing: 1.5px; text-transform: uppercase;">Fancy <span style="color: var(--color-primary);">Day</span> Dream</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="product.html" class="nav-link active">Shop</a></li>
+                <li><a href="gallery.html" class="nav-link">Photos</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+            </ul>
+            <div class="nav-actions">
+                <select class="lang-switch" style="background: transparent; border: 1px solid var(--gray-300); padding: 5px; border-radius: 4px; color: var(--color-secondary); font-family: var(--font-body); outline: none; cursor: pointer; font-size: 0.8rem; height: 36px;">
+                    <option value="en">ENG</option>
+                    <option value="np">NEP</option>
+                </select>
+                <a href="craft.html" class="nav-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="badge">0</span>
+                </a>
+                <a href="studio.html" class="btn-premium primary" style="padding: 10px 24px; font-size: 0.75rem;">Design Studio</a>
+            </div>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container section-padding">
+        <header class="section-header" style="text-align:left; margin-bottom: 40px; padding-bottom: 30px; border-bottom: 1px solid var(--gray-200);">
+            <h1 style="font-size: 3rem; text-transform: uppercase;">Shop Our <span class="gold-accent">Clothes</span></h1>
+            <p style="text-transform: uppercase; font-size:0.85rem; letter-spacing: 2px; color: var(--gray-400); margin: 0;">See the latest jackets, hoodies, and t-shirts.</p>
+        </header>
+
+        <div class="shop-layout">
+            <!-- SIDEBAR -->
+            <aside class="shop-sidebar">
+                <div class="filter-group">
+                    <h4 class="filter-title">Category</h4>
+                    <label class="filter-checkbox"><input type="checkbox" checked value="all"><span>All</span></label>
+                    <label class="filter-checkbox"><input type="checkbox" value="outerwear"><span>Outerwear</span></label>
+                    <label class="filter-checkbox"><input type="checkbox" value="essentials"><span>Essentials</span></label>
+                    <label class="filter-checkbox"><input type="checkbox" value="fusion"><span>Nepali Fusion</span></label>
+                </div>
+
+                <div class="filter-group">
+                    <h4 class="filter-title">Size</h4>
+                    <div class="size-grid">
+                        <button class="size-btn">XS</button>
+                        <button class="size-btn active">S</button>
+                        <button class="size-btn">M</button>
+                        <button class="size-btn">L</button>
+                        <button class="size-btn">XL</button>
+                    </div>
+                </div>
+
+                <div class="filter-group" style="border-bottom: none;">
+                    <h4 class="filter-title">Color</h4>
+                    <div class="color-filter-grid">
+                        <button class="color-filter-btn" style="background:#111;"></button>
+                        <button class="color-filter-btn" style="background:#fff;"></button>
+                        <button class="color-filter-btn" style="background:#C41E3A;"></button>
+                        <button class="color-filter-btn" style="background:#D4AF37;"></button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- PRODUCTS AREA -->
+            <div class="shop-main">
+                <div class="shop-topbar">
+                    <div class="shop-results" id="resultsCount">Loading...</div>
+                    <div class="shop-sort">
+                        <label for="sort" style="font-size: 0.75rem; text-transform: uppercase; font-weight: 600; margin-right: 10px; color: var(--color-secondary);">Sort By:</label>
+                        <select id="sort" class="sort-select">
+                            <option>Newest</option>
+                            <option>Price: High to Low</option>
+                            <option>Price: Low to High</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="showcase-grid" id="mainProductsGrid">
+                    <!-- Products dynamically loaded here via DB -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/img/logo.png" alt="Fancy Day Dream" class="brand-logo">
+                    <p class="footer-desc">Good quality clothes made in Nepal. You can also design your own clothes with us.</p>
+                    <div class="footer-socials">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-heading">Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="product.html">All Clothes</a></li>
+                        <li><a href="studio.html">Design Studio</a></li>
+                        <li><a href="gallery.html">Photos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-heading">Help</h4>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Delivery Info</a></li>
+                        <li><a href="#">Return Info</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading">Join Us</h4>
+                    <p class="footer-desc" style="font-size: 0.85rem;">Enter your email to get news about new clothes and offers.</p>
+                    <input type="email" placeholder="Your Email" class="newsletter-input">
+                    <button class="btn-premium primary" style="width: 100%; border-radius: 0;">Subscribe</button>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Fancy Day Dream. Made with pride in Nepal.</p>
+                <div style="display: flex; gap: 20px;">
+                    <i class="fas fa-money-bill-wave" title="Cash on Delivery"></i>
+                    <i class="fas fa-wallet" title="eSewa / Khalti"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+        let allProducts = [];
+
+        async function loadStorefront() {
+            const grid = document.getElementById('mainProductsGrid');
+            
+            const defaultProducts = [
+                { id: 1, name: "Kathmandu Valley Hoodie", category: "Outerwear", base_price: "3500", discount_pct: "0", image_url: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=600&q=80" },
+                { id: 2, name: "Everest Base Camp Jacket", category: "Outerwear", base_price: "4200", discount_pct: "10", image_url: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=600&q=80" },
+                { id: 3, name: "Nepali Dhaka Fusion Tee", category: "Fusion", base_price: "1800", discount_pct: "0", image_url: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600&q=80" },
+                { id: 4, name: "City Street Essential T-Shirt", category: "Essentials", base_price: "1500", discount_pct: "0", image_url: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80" },
+                { id: 5, name: "Gurkha Heritage Cargo Jacket", category: "Outerwear", base_price: "4500", discount_pct: "15", image_url: "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=600&q=80" },
+                { id: 6, name: "Himalayan Sunrise Sweater", category: "Essentials", base_price: "2800", discount_pct: "5", image_url: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=600&q=80" }
+            ];
+
+            try {
+                // FETCHING FROM DATABASE TO KEEP ADMIN CHANGES IN SYNC
+                const response = await fetch('backend/api.php?action=get_products');
+                if (!response.ok) throw new Error("API not accessible");
+                allProducts = await response.json();
+                
+                if (!Array.isArray(allProducts) || allProducts.length === 0) {
+                    allProducts = defaultProducts;
+                }
+            } catch (err) {
+                console.warn("Using fallback static products because DB connection failed:", err);
+                allProducts = defaultProducts;
+            }
+
+            renderProducts(allProducts);
+
+            document.querySelectorAll('.filter-checkbox input').forEach(checkbox => {
+                checkbox.addEventListener('change', filterProducts);
+            });
+        }
+
+        function renderProducts(products) {
+            const grid = document.getElementById('mainProductsGrid');
+            document.getElementById('resultsCount').textContent = `Showing ${products.length} Cloths`;
+            
+            if (products.length === 0) {
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align:center; padding: 100px; color:#888;">No clothes found in this category.</p>';
+                return;
+            }
+
+            grid.innerHTML = '';
+            products.forEach((p, index) => {
+                const price = parseFloat(p.base_price);
+                const discount = parseInt(p.discount_pct || 0);
+                const finalPrice = (price * (1 - discount / 100)).toFixed(2);
+                
+                let priceHtml = '';
+                let discountHtml = '';
+                if (discount > 0) {
+                    priceHtml = `<span style="text-decoration: line-through; color: var(--gray-400); font-size: 0.9rem; margin-right: 8px;">NPR ${price.toFixed(2)}</span><span style="color: var(--color-primary);">NPR ${finalPrice}</span>`;
+                    discountHtml = `<div style="position: absolute; top: 15px; left: 15px; background: var(--color-primary); color: white; padding: 5px 10px; font-size: 0.8rem; font-weight: bold; border-radius: 4px; z-index: 10;">-${discount}%</div>`;
+                } else {
+                    priceHtml = `<span style="color: var(--color-primary);">NPR ${finalPrice}</span>`;
+                }
+                
+                const html = `
+                <div class="product-card" style="display: flex; flex-direction: column; height: 100%; border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; background: var(--color-neutral); box-shadow: var(--shadow-sm); transition: transform 0.3s; position: relative;">
+                    ${discountHtml}
+                    <div class="product-image-wrapper" style="height: 300px; overflow: hidden; position: relative;">
+                        <img src="${p.image_url.includes('/') ? p.image_url : 'assets/img/' + p.image_url}" alt="${p.name}" class="product-image" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    </div>
+                    <div class="product-info" style="padding: 20px; display: flex; flex-direction: column; flex-grow: 1;">
+                        <div class="product-category" style="color: var(--gray-400); font-size: 0.8rem; text-transform: uppercase;">${p.category}</div>
+                        <h3 class="product-title" style="margin-bottom: 10px; font-size: 1.2rem; color: var(--color-secondary);">${p.name}</h3>
+                        <div class="product-price" style="font-weight: 800; font-size: 1.1rem; margin-bottom: 15px;">${priceHtml}</div>
+                        <select id="size-${index}" style="margin-bottom: auto; padding: 8px; border: 1px solid var(--gray-300); border-radius: 4px; font-family: var(--font-body); outline: none; background: transparent; cursor: pointer;">
+                            <option value="S">Size: S</option>
+                            <option value="M" selected>Size: M</option>
+                            <option value="L">Size: L</option>
+                            <option value="XL">Size: XL</option>
+                        </select>
+                        <div style="margin-top: 15px; display: flex; gap: 10px;">
+                            <button onclick="addStandardToCraft('${p.name}', '${finalPrice}', '${p.image_url}', false, document.getElementById('size-${index}').value)" class="btn-premium secondary" style="flex: 1; padding: 10px; font-size: 0.8rem; text-align: center;">Add to Craft</button>
+                            <button onclick="buyNow('${p.name}', '${finalPrice}', '${p.image_url}', document.getElementById('size-${index}').value)" class="btn-premium primary" style="flex: 1; padding: 10px; font-size: 0.8rem; text-align: center;">Buy Now</button>
+                        </div>
+                    </div>
+                </div>`;
+                grid.insertAdjacentHTML('beforeend', html);
+            });
+        }
+
+        function filterProducts() {
+            const checkedCategories = Array.from(document.querySelectorAll('.filter-checkbox input:checked'))
+                                            .map(cb => cb.value.toLowerCase());
+            
+            if (checkedCategories.includes('all') || checkedCategories.length === 0) {
+                renderProducts(allProducts);
+                return;
+            }
+
+            const filtered = allProducts.filter(p => checkedCategories.includes(p.category.toLowerCase()));
+            renderProducts(filtered);
+        }
+
+        function addStandardToCraft(name, price, imgUrl, skipAlert = false, size = 'M') {
+            const standardItem = {
+                id: (Date.now() + Math.random()).toString(),
+                name: name,
+                details: `Size: ${size}`,
+                price: price,
+                image: imgUrl
+            };
+            let craftCart = [];
+            try {
+                const stored = localStorage.getItem('craftCart');
+                if (stored) craftCart = JSON.parse(stored);
+            } catch(e) {}
+            if(!Array.isArray(craftCart)) craftCart = [];
+            
+            craftCart.push(standardItem);
+            localStorage.setItem('craftCart', JSON.stringify(craftCart));
+            if(!skipAlert) alert(`${name} (Size: ${size}) has been added to your craft bag.`);
+            if(window.updateCartBadge) window.updateCartBadge();
+        }
+
+        function buyNow(name, price, imgUrl, size = 'M') {
+            addStandardToCraft(name, price, imgUrl, true, size);
+            window.location.href = 'craft.html';
+        }
+
+        loadStorefront();
+    </script>
+</body>
+</html>
