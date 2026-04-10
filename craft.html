@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fancy Day Dream | Your Cart</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Inter:wght@300;400;500;600&family=Mukta:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .cart-layout { display: grid; grid-template-columns: 1fr 380px; gap: 40px; }
+        .cart-items-wrapper { background: var(--color-neutral); border: 1px solid var(--gray-200); }
+        .cart-header-row { display: grid; grid-template-columns: 3fr 1fr 1fr auto; padding: 20px 30px; border-bottom: 1px solid var(--gray-200); font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: var(--gray-400); letter-spacing: 1px; }
+        
+        .cart-item { display: grid; grid-template-columns: 3fr 1fr 1fr auto; padding: 30px; border-bottom: 1px solid var(--gray-200); align-items: center; }
+        .cart-item:last-child { border-bottom: none; }
+        
+        .item-info { display: flex; gap: 20px; align-items: center; }
+        .item-img { width: 100px; height: 100px; object-fit: cover; background: var(--gray-100); border-radius: 4px; }
+        .item-title { font-size: 1.1rem; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; color: var(--color-secondary); }
+        .item-meta { font-size: 0.85rem; color: var(--gray-500); }
+        .item-price { font-weight: 600; color: var(--color-secondary); }
+        
+        .qty-controls { display: inline-flex; border: 1px solid var(--gray-300); border-radius: 4px; overflow: hidden; align-items: center; }
+        .qty-btn { background: transparent; border: none; padding: 10px 15px; cursor: pointer; color: var(--color-secondary); transition: 0.2s; }
+        .qty-btn:hover { background: var(--gray-100); }
+        .qty-input { width: 40px; text-align: center; border: none; font-family: var(--font-body); font-weight: 600; font-size: 0.9rem; outline: none; }
+        
+        .btn-remove { background: none; border: none; color: var(--color-primary); cursor: pointer; font-size: 1.2rem; transition: transform 0.2s; }
+        .btn-remove:hover { transform: scale(1.2); }
+
+        .cart-summary { background: var(--gray-50); border: 1px solid var(--gray-200); padding: 40px 30px; position: sticky; top: 120px; }
+        .summary-title { font-size: 1.2rem; text-transform: uppercase; font-weight: 800; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid var(--gray-300); }
+        .summary-line { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 0.95rem; color: var(--gray-600); }
+        .summary-total { display: flex; justify-content: space-between; margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--gray-300); font-weight: 800; font-size: 1.4rem; color: var(--color-secondary); }
+        
+        .btn-checkout { width: 100%; padding: 20px; margin-top: 30px; font-size: 1rem; text-align: center; }
+
+        @media (max-width: 991px) {
+            .cart-layout { grid-template-columns: 1fr; }
+            .cart-header-row { display: none; }
+            .cart-item { grid-template-columns: 1fr; gap: 20px; position: relative; }
+            .item-info { margin-bottom: 15px; }
+            .btn-remove { position: absolute; top: 30px; right: 30px; }
+            .cart-summary { position: static; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TRUST TOP BAR -->
+    <div class="top-bar" id="globalTopBar">
+        CASH ON DELIVERY (COD) AVAILABLE <span>100% QUALITY GUARANTEED</span>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <a href="index.html" class="brand-logo-container">
+                <div class="brand-fdd-wrapper">
+                    <span class="fdd-letter fdd-f">F</span>
+                    <span class="fdd-letter fdd-d1">D</span>
+                    <span class="fdd-letter fdd-d2">D</span>
+                </div>
+                <span class="brand-fancy">Fancy Day Dream</span>
+            </a>
+            
+            <div style="display: flex; flex-direction: column; align-items: center; flex-grow: 1;">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="product.html" class="nav-link">Shop</a></li>
+                    <li><a href="gallery.html" class="nav-link">Photos</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-actions">
+                <select class="lang-switch" style="background: transparent; border: 1px solid var(--gray-300); padding: 5px; border-radius: 4px; color: var(--color-secondary); font-family: var(--font-body); outline: none; cursor: pointer; font-size: 0.8rem; height: 36px;">
+                    <option value="en">ENG</option>
+                    <option value="np">NEP</option>
+                </select>
+                <a href="craft.html" class="nav-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="badge">0</span>
+                </a>
+                <a href="studio.html" class="btn-premium primary" style="padding: 10px 24px; font-size: 0.75rem;">Design Studio</a>
+            </div>
+            
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container section-padding" style="min-height: 80vh;">
+        <header class="section-header" style="text-align:left; margin-bottom: 40px;">
+            <h1 style="font-size: 3rem; text-transform: uppercase;">Your <span class="gold-accent">Cart</span></h1>
+            <p style="text-transform: uppercase; font-size:0.85rem; letter-spacing: 2px; color: var(--gray-400); margin: 0;">Review your items before buying.</p>
+        </header>
+
+        <div class="cart-layout" id="cartLayout">
+            <div class="cart-items-wrapper">
+                <div class="cart-header-row">
+                    <div>Product Name</div>
+                    <div>Price</div>
+                    <div>Quantity</div>
+                    <div style="text-align: right;">Delete</div>
+                </div>
+                
+                <div id="cartItemsContainer">
+                    <!-- Dynamic Cart Items loaded here via JS -->
+                </div>
+            </div>
+
+            <aside class="cart-summary">
+                <h2 class="summary-title">Summary</h2>
+                <div class="summary-line">
+                    <span>Item Total</span>
+                    <span id="summary-subtotal">NPR 0</span>
+                </div>
+                <div class="summary-line" style="color:var(--color-primary);">
+                    <span>Discount</span>
+                    <span>No Discount</span>
+                </div>
+                <div class="summary-line">
+                    <span>Delivery Charge</span>
+                    <span style="font-size:0.8rem; color:var(--gray-400);">Calculated at Checkout</span>
+                </div>
+                
+                <div class="summary-total">
+                    <span>Total Amount</span>
+                    <span id="summary-total" class="gold-accent">NPR 0</span>
+                </div>
+
+                <a href="checkout.html" class="btn-premium primary btn-checkout">Proceed to Checkout</a>
+                
+                <div style="text-align:center; margin-top: 20px;">
+                    <i class="fas fa-lock" style="color:var(--gray-400); font-size: 0.8rem;"></i>
+                    <span style="font-size: 0.75rem; color:var(--gray-500); text-transform:uppercase; letter-spacing:1px; margin-left: 5px;">Safe & Secure Payment</span>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/img/logo.png" alt="Fancy Day Dream" class="brand-logo">
+                    <p class="footer-desc">Good quality clothes made in Nepal. You can also design your own clothes with us.</p>
+                    <div class="footer-socials">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-heading">Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="product.html">All Clothes</a></li>
+                        <li><a href="studio.html">Design Studio</a></li>
+                        <li><a href="gallery.html">Photos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-heading">Help</h4>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Delivery Info</a></li>
+                        <li><a href="#">Return Info</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading">Join Us</h4>
+                    <p class="footer-desc" style="font-size: 0.85rem;">Enter your email to get news about new clothes and offers.</p>
+                    <input type="email" placeholder="Your Email" class="newsletter-input">
+                    <button class="btn-premium primary" style="width: 100%; border-radius: 0;">Subscribe</button>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Fancy Day Dream. Made with pride in Nepal.</p>
+                <div style="display: flex; gap: 20px;">
+                    <i class="fas fa-money-bill-wave" title="Cash on Delivery"></i>
+                    <i class="fas fa-wallet" title="eSewa / Khalti"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+        function loadCartFromStorage() {
+            const container = document.getElementById('cartItemsContainer');
+            const subtotalEl = document.getElementById('summary-subtotal');
+            const totalEl = document.getElementById('summary-total');
+            const layout = document.getElementById('cartLayout');
+
+            let cart = [];
+            try {
+                const stored = localStorage.getItem('craftCart');
+                if (stored) cart = JSON.parse(stored);
+            } catch(e) {}
+            if(!Array.isArray(cart)) cart = [];
+            
+            if (cart.length === 0) {
+                layout.innerHTML = `
+                    <div style="text-align:center; padding: 100px 20px; background:var(--gray-50); border: 1px dashed var(--gray-300);">
+                        <i class="fas fa-shopping-bag" style="font-size: 3rem; color:var(--gray-300); margin-bottom: 20px;"></i>
+                        <h2 style="text-transform:uppercase; font-size:1.5rem; margin-bottom: 10px;">Your Cart is Empty</h2>
+                        <p style="color:var(--gray-500); margin-bottom: 30px;">Add clothes to your cart to see them here.</p>
+                        <a href="product.html" class="btn-premium primary">Go to Shop</a>
+                    </div>
+                `;
+                return;
+            }
+
+            let total = 0;
+            container.innerHTML = '';
+
+            cart.forEach(item => {
+                let priceNum = parseFloat(item.price.replace(/[^0-9.]/g, ''));
+                if(isNaN(priceNum)) priceNum = 1500; // fallback
+                total += priceNum;
+
+                container.innerHTML += `
+                    <div class="cart-item">
+                        <div class="item-info">
+                            <img src="${item.image}" alt="${item.name}" class="item-img">
+                            <div>
+                                <h3 class="item-title">${item.name}</h3>
+                                <p class="item-meta">${item.details || 'Standard'}</p>
+                            </div>
+                        </div>
+                        <div class="item-price">NPR ${priceNum.toFixed(2)}</div>
+                        <div>
+                            <div class="qty-controls">
+                                <button class="qty-btn" disabled>-</button>
+                                <input type="text" class="qty-input" value="1" readonly>
+                                <button class="qty-btn" disabled>+</button>
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <button class="btn-remove" onclick="removeCartItem(${item.id})"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            const formattedTotal = total.toFixed(2);
+            subtotalEl.textContent = `NPR ${formattedTotal}`;
+            totalEl.textContent = `NPR ${formattedTotal}`;
+        }
+
+        function removeCartItem(id) {
+            let cart = [];
+            try { 
+                const stored = localStorage.getItem('craftCart');
+                if (stored) cart = JSON.parse(stored);
+            } catch(e) {}
+            if(!Array.isArray(cart)) cart = [];
+
+            cart = cart.filter(item => item.id.toString() !== id.toString());
+            localStorage.setItem('craftCart', JSON.stringify(cart));
+            loadCartFromStorage();
+            if(window.updateCartBadge) window.updateCartBadge();
+        }
+
+        window.addEventListener('DOMContentLoaded', loadCartFromStorage);
+    </script>
+</body>
+</html>

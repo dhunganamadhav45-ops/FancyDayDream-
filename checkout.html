@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fancy Day Dream | Checkout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Inter:wght@300;400;500;600&family=Mukta:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .checkout-layout { display: grid; grid-template-columns: 1.2fr 0.8fr; min-height: 100vh; }
+        .checkout-main { padding: 60px 8%; background: var(--color-neutral); }
+        .checkout-summary { padding: 60px 8%; background: var(--gray-50); border-left: 1px solid var(--gray-200); }
+        
+        .c-header { margin-bottom: 40px; }
+        .c-header h2 { font-size: 1.8rem; text-transform: uppercase; margin-bottom: 10px; }
+        .c-section { margin-bottom: 40px; }
+        .c-title { font-size: 1.1rem; text-transform: uppercase; font-weight: 700; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid var(--gray-200); }
+        
+        .c-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .c-full { grid-column: 1 / -1; }
+        .c-input { width: 100%; padding: 14px 18px; border: 1px solid var(--gray-300); border-radius: 4px; font-family: var(--font-body); font-size: 0.9rem; margin-bottom: 15px; transition: var(--transition-smooth); background: #fff; }
+        .c-input:focus { border-color: var(--color-secondary); outline: none; }
+        
+        .payment-card { border: 1px solid var(--gray-300); border-radius: 4px; padding: 20px; margin-bottom: 15px; cursor: pointer; transition: 0.2s; background: #fff; display: flex; align-items: center; gap: 15px; }
+        .payment-card:hover { border-color: var(--color-primary); }
+        .payment-card.active { border-color: var(--color-primary); background: var(--red-light); }
+        .payment-card.active i { color: var(--color-primary); }
+        
+        .summary-item { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+        .summary-img { width: 60px; height: 60px; border-radius: 4px; object-fit: cover; border: 1px solid var(--gray-300); }
+        .summary-details { flex-grow: 1; padding: 0 15px; }
+        .summary-name { font-size: 0.9rem; font-weight: 600; margin-bottom: 5px; color: var(--color-secondary); }
+        .summary-meta { font-size: 0.75rem; color: var(--gray-500); }
+        .summary-price { font-weight: 700; color: var(--color-secondary); }
+        
+        .summary-total { margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--gray-300); }
+        .total-line { display: flex; justify-content: space-between; margin-bottom: 15px; color: var(--gray-600); font-size: 0.9rem; }
+        .final-price { font-size: 1.4rem; font-weight: 800; color: var(--color-primary); }
+        
+        @media (max-width: 900px) { .checkout-layout { grid-template-columns: 1fr; } .checkout-summary { grid-row: 1; padding: 40px 20px; } .checkout-main { padding: 40px 20px; } }
+    </style>
+</head>
+<body>
+
+    <!-- TRUST TOP BAR -->
+    <div class="top-bar">
+        CASH ON DELIVERY (COD) AVAILABLE <span>100% QUALITY GUARANTEED</span>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <a href="index.html" class="brand-logo-container">
+                <div class="brand-fdd-wrapper">
+                    <span class="fdd-letter fdd-f">F</span>
+                    <span class="fdd-letter fdd-d1">D</span>
+                    <span class="fdd-letter fdd-d2">D</span>
+                </div>
+                <span class="brand-fancy">Fancy Day Dream</span>
+            </a>
+            
+            <div style="display: flex; flex-direction: column; align-items: center; flex-grow: 1;">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="product.html" class="nav-link">Shop</a></li>
+                    <li><a href="gallery.html" class="nav-link">Photos</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                </ul>
+                <div class="search-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" placeholder="Search clothes..." class="search-input" id="navSearchInput">
+                </div>
+            </div>
+
+            <div class="nav-actions">
+                <select class="lang-switch" style="background: transparent; border: 1px solid var(--gray-300); padding: 5px; border-radius: 4px; color: var(--color-secondary); font-family: var(--font-body); outline: none; cursor: pointer; font-size: 0.8rem; height: 36px;">
+                    <option value="en">ENG</option>
+                    <option value="np">NEP</option>
+                </select>
+                <a href="craft.html" class="nav-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="badge">0</span>
+                </a>
+                <a href="studio.html" class="btn-premium primary" style="padding: 10px 24px; font-size: 0.75rem;">Design Studio</a>
+            </div>
+            
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="checkout-layout">
+        <!-- Main Form Column -->
+        <div class="checkout-main">
+            <div class="c-header">
+                <h2>Secure Checkout</h2>
+                <p style="color:var(--gray-500); font-size:0.9rem;">Fill in your details so we can deliver your items.</p>
+            </div>
+
+            <form id="checkoutForm">
+                <div class="c-section">
+                    <h3 class="c-title">1. Your Details</h3>
+                    <div class="c-grid">
+                        <input type="text" class="c-input c-full" placeholder="Email Address" required>
+                        <input type="text" class="c-input" placeholder="First Name" required>
+                        <input type="text" class="c-input" placeholder="Last Name" required>
+                    </div>
+                </div>
+
+                <div class="c-section">
+                    <h3 class="c-title">2. Delivery Address</h3>
+                    <div class="c-grid">
+                        <input type="text" class="c-input c-full" placeholder="Street Name or Tole" required>
+                        <input type="text" class="c-input" placeholder="City (e.g. Kathmandu)" required>
+                        <input type="text" class="c-input" placeholder="Province" required>
+                        <input type="tel" class="c-input c-full" placeholder="Phone Number (for delivery person)" required>
+                    </div>
+                </div>
+
+                <div class="c-section">
+                    <h3 class="c-title">3. How to Pay</h3>
+                    
+                    <label class="payment-card active">
+                        <input type="radio" name="payment" value="cod" checked style="display:none;">
+                        <i class="fas fa-money-bill-wave" style="font-size: 1.5rem; color:var(--gray-500);"></i>
+                        <div>
+                            <div style="font-weight:700; font-size:0.95rem;">Cash On Delivery (COD)</div>
+                            <div style="font-size:0.8rem; color:var(--gray-500);">Pay the delivery person when your order arrives.</div>
+                        </div>
+                    </label>
+
+                    <label class="payment-card">
+                        <input type="radio" name="payment" value="esewa" style="display:none;">
+                        <i class="fas fa-wallet" style="font-size: 1.5rem; color:var(--gray-500);"></i>
+                        <div>
+                            <div style="font-weight:700; font-size:0.95rem;">eSewa / Khalti</div>
+                            <div style="font-size:0.8rem; color:var(--gray-500);">Pay online now. Safe and fast.</div>
+                        </div>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-premium primary" style="width: 100%; padding: 20px; font-size: 1rem;">Complete Order</button>
+            </form>
+        </div>
+
+        <!-- Summary Column -->
+        <div class="checkout-summary">
+            <h3 style="font-size: 1.1rem; text-transform: uppercase; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 1px solid var(--gray-300);">Your Cart</h3>
+            
+            <div id="checkoutItemsList">
+                <!-- Javascript will load items here -->
+            </div>
+
+            <div class="summary-total">
+                <div class="total-line">
+                    <span>Item Total</span>
+                    <span id="checkoutSubtotal">NPR 0.00</span>
+                </div>
+                <div class="total-line">
+                    <span>Delivery Charge</span>
+                    <span style="color:var(--gray-500);">Calculated at next step</span>
+                </div>
+                <div class="total-line" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--gray-300); align-items: center;">
+                    <span style="font-weight: 700; color:var(--color-secondary);">Total to Pay</span>
+                    <span class="final-price" id="checkoutFinalTotal">NPR 0.00</span>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px; font-size: 0.8rem; color: var(--gray-500); display: flex; gap: 10px; align-items: flex-start;">
+                <i class="fas fa-lock" style="margin-top: 3px;"></i>
+                <p>Your details are safely locked. We will never share your information with anyone.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+        // Payment Card Toggle UI
+        const paymentCards = document.querySelectorAll('.payment-card');
+        paymentCards.forEach(card => {
+            card.addEventListener('click', () => {
+                paymentCards.forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                card.querySelector('input').checked = true;
+            });
+        });
+
+        // Load Items
+        function loadCheckoutItems() {
+            const list = document.getElementById('checkoutItemsList');
+            const subtotalEl = document.getElementById('checkoutSubtotal');
+            const totalEl = document.getElementById('checkoutFinalTotal');
+
+            let cart = JSON.parse(localStorage.getItem('craftCart')) || [];
+            
+            if(cart.length === 0) {
+                list.innerHTML = '<p style="color:red; font-size:0.9rem;">Your cart is empty. Please add items to buy.</p>';
+                return;
+            }
+
+            let total = 0;
+            list.innerHTML = '';
+
+            cart.forEach(item => {
+                let priceNum = parseFloat(item.price.replace(/[^0-9.]/g, ''));
+                total += priceNum;
+
+                list.innerHTML += `
+                    <div class="summary-item">
+                        <img src="${item.image}" alt="${item.name}" class="summary-img">
+                        <div class="summary-details">
+                            <div class="summary-name">${item.name}</div>
+                            <div class="summary-meta">${item.details || 'Standard'}</div>
+                        </div>
+                        <div class="summary-price">NPR ${priceNum.toFixed(2)}</div>
+                    </div>
+                `;
+            });
+
+            subtotalEl.textContent = `NPR ${total.toFixed(2)}`;
+            totalEl.textContent = `NPR ${total.toFixed(2)}`; // Assuming free shipping or calculated later
+        }
+
+        document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Order Placed Successfully! We will call you soon to confirm.');
+            localStorage.removeItem('craftCart');
+            window.location.href = 'index.html';
+        });
+
+        window.addEventListener('DOMContentLoaded', loadCheckoutItems);
+    </script>
+</body>
+</html>

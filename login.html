@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fancy Day Dream | Identity Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Inter:wght@300;400;500;600&family=Mukta:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .login-page { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; background: var(--color-neutral); }
+        .login-visual { background-image: url('assets/img/1.jpg'); background-size: cover; background-position: center; position: relative; display: flex; align-items: flex-end; padding: 60px; }
+        .login-visual::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(17,17,17,0.9), rgba(17,17,17,0.3)); }
+        .visual-content { position: relative; z-index: 10; color: var(--color-neutral); }
+        .login-form-container { display: flex; align-items: center; justify-content: center; padding: 80px; }
+        .login-box { width: 100%; max-width: 400px; }
+        .login-header { margin-bottom: 40px; text-align: left; }
+        .login-header h2 { font-size: 2.2rem; margin-bottom: 10px; color: var(--color-secondary); text-transform: uppercase; }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 10px; color: var(--gray-500); }
+        .input-pill { width: 100%; padding: 15px 20px; background: var(--gray-100); border: 1px solid var(--gray-200); font-family: var(--font-body); font-size: 0.9rem; outline: none; transition: var(--transition-smooth); color: var(--color-secondary); }
+        .input-pill:focus { border-color: var(--color-secondary); background: var(--color-neutral); }
+        .btn-auth { width: 100%; padding: 18px; background: var(--color-secondary); color: var(--color-neutral); border: none; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); margin-bottom: 20px; }
+        .btn-auth:hover { background: var(--color-primary); }
+        .btn-guest { width: 100%; padding: 14px; background: transparent; color: var(--color-secondary); border: 1px solid var(--gray-300); text-transform: uppercase; font-weight: 700; letter-spacing: 1px; font-size: 0.75rem; cursor: pointer; transition: var(--transition-smooth); text-decoration: none; display: block; text-align: center; }
+        .btn-guest:hover { background: var(--gray-100); border-color: var(--color-secondary); }
+        .auth-divider { text-align: center; margin: 30px 0; position: relative; }
+        .auth-divider::before { content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background: var(--gray-200); z-index: 1; }
+        .auth-divider span { background: var(--color-neutral); padding: 0 15px; position: relative; z-index: 2; font-size: 0.65rem; text-transform: uppercase; color: var(--gray-400); letter-spacing: 2px; font-weight: 700; }
+        @media (max-width: 991px) { .login-page { grid-template-columns: 1fr; } .login-visual { display: none; } .login-form-container { padding: 40px 20px; background: var(--gray-50); } .login-box { background: var(--color-neutral); padding: 40px; border-radius: 8px; box-shadow: var(--shadow-soft); } }
+    </style>
+</head>
+<body>
+
+    <!-- TRUST TOP BAR -->
+    <div class="top-bar">
+        CASH ON DELIVERY (COD) AVAILABLE <span>100% QUALITY GUARANTEED</span>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <a href="index.html" class="brand-logo-container">
+                <div class="brand-fdd-wrapper">
+                    <span class="fdd-letter fdd-f">F</span>
+                    <span class="fdd-letter fdd-d1">D</span>
+                    <span class="fdd-letter fdd-d2">D</span>
+                </div>
+                <span class="brand-fancy">Fancy Day Dream</span>
+            </a>
+            
+            <div style="display: flex; flex-direction: column; align-items: center; flex-grow: 1;">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="product.html" class="nav-link">Shop</a></li>
+                    <li><a href="gallery.html" class="nav-link">Photos</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                </ul>
+                <div class="search-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" placeholder="Search clothes..." class="search-input" id="navSearchInput">
+                </div>
+            </div>
+
+            <div class="nav-actions">
+                <select class="lang-switch" style="background: transparent; border: 1px solid var(--gray-300); padding: 5px; border-radius: 4px; color: var(--color-secondary); font-family: var(--font-body); outline: none; cursor: pointer; font-size: 0.8rem; height: 36px;">
+                    <option value="en">ENG</option>
+                    <option value="np">NEP</option>
+                </select>
+                <a href="craft.html" class="nav-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="badge">0</span>
+                </a>
+                <a href="studio.html" class="btn-premium primary" style="padding: 10px 24px; font-size: 0.75rem;">Design Studio</a>
+            </div>
+            
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="login-page">
+        <!-- Visual Column -->
+        <div class="login-visual">
+            <div class="visual-content">
+                <span class="gold-accent" style="letter-spacing: 5px; text-transform:uppercase; font-size:0.75rem; font-weight:800;">Modern Heritage</span>
+                <h1 style="font-size: 3.5rem; margin-top:10px; line-height: 1.1; text-transform: uppercase;">Build Your Identity.</h1>
+            </div>
+        </div>
+
+        <!-- Form Column -->
+        <div class="login-form-container">
+            <div class="login-box">
+                <div class="login-header">
+                    <h2>Portal Access</h2>
+                    <p style="color:var(--gray-500); font-size:0.9rem;">Please authenticate to continue.</p>
+                </div>
+
+                <form action="index.html">
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" class="input-pill" placeholder="user@domain.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="input-pill" placeholder="Your secured key" required>
+                    </div>
+                    
+                    <div style="display:flex; justify-content:space-between; margin-bottom: 30px;">
+                        <label style="display:flex; align-items:center; font-size:0.8rem; color:var(--gray-500); cursor:pointer;">
+                            <input type="checkbox" style="margin-right:8px;"> Remember me
+                        </label>
+                        <a href="#" style="font-size:0.8rem; color:var(--color-primary); text-decoration:none;">Lost Key?</a>
+                    </div>
+
+                    <button type="submit" class="btn-auth">Authenticate</button>
+                    
+                    <div class="auth-divider">
+                        <span>OR</span>
+                    </div>
+
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom: 20px;">
+                        <a href="index.html" class="btn-guest">Home Page</a>
+                        <a href="studio.html" class="btn-guest" style="background:var(--color-primary); color:var(--color-neutral); border-color:var(--color-primary);">Design Studio</a>
+                    </div>
+
+                    <p style="text-align:center; margin-top: 30px; font-size:0.85rem; color:var(--gray-500);">
+                        Awaiting induction? <a href="register.html" style="color:var(--color-secondary); font-weight:700; text-decoration:underline;">Create Profile</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

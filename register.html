@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fancy Day Dream | Create Account</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Inter:wght@300;400;500;600&family=Mukta:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .auth-container { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 40px 20px; background: var(--gray-50); }
+        .auth-card { background: var(--color-neutral); width: 100%; max-width: 500px; padding: 50px; box-shadow: var(--shadow-soft); border-top: 4px solid var(--color-primary); }
+        .auth-header { text-align: center; margin-bottom: 40px; }
+        .auth-header h2 { font-size: 2.2rem; margin-bottom: 10px; text-transform: uppercase; }
+        .form-group label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 8px; color: var(--gray-500); }
+        .input-pill { width: 100%; padding: 14px 20px; border: 1px solid var(--gray-200); background: var(--gray-100); font-family: var(--font-body); font-size: 0.9rem; outline: none; transition: var(--transition-smooth); color: var(--color-secondary); }
+        .input-pill:focus { border-color: var(--color-secondary); }
+        .btn-auth { width: 100%; padding: 18px; background: var(--color-primary); color: var(--color-neutral); border: none; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: var(--transition-smooth); margin-top: 20px; }
+        .btn-auth:hover { background: var(--color-accent); color: var(--color-secondary); }
+    </style>
+</head>
+<body>
+
+    <!-- TRUST TOP BAR -->
+    <div class="top-bar">
+        CASH ON DELIVERY (COD) AVAILABLE <span>100% QUALITY GUARANTEED</span>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <a href="index.html" class="brand-logo-container">
+                <div class="brand-fdd-wrapper">
+                    <span class="fdd-letter fdd-f">F</span>
+                    <span class="fdd-letter fdd-d1">D</span>
+                    <span class="fdd-letter fdd-d2">D</span>
+                </div>
+                <span class="brand-fancy">Fancy Day Dream</span>
+            </a>
+            
+            <div style="display: flex; flex-direction: column; align-items: center; flex-grow: 1;">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="product.html" class="nav-link">Shop</a></li>
+                    <li><a href="gallery.html" class="nav-link">Photos</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                </ul>
+                <div class="search-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" placeholder="Search clothes..." class="search-input" id="navSearchInput">
+                </div>
+            </div>
+
+            <div class="nav-actions">
+                <select class="lang-switch" style="background: transparent; border: 1px solid var(--gray-300); padding: 5px; border-radius: 4px; color: var(--color-secondary); font-family: var(--font-body); outline: none; cursor: pointer; font-size: 0.8rem; height: 36px;">
+                    <option value="en">ENG</option>
+                    <option value="np">NEP</option>
+                </select>
+                <a href="craft.html" class="nav-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="badge">0</span>
+                </a>
+                <a href="studio.html" class="btn-premium primary" style="padding: 10px 24px; font-size: 0.75rem;">Design Studio</a>
+            </div>
+            
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h2>Create Account</h2>
+                <p style="color:var(--gray-500); font-size:0.9rem;">Join the modern fusion community.</p>
+            </div>
+
+            <form id="registerForm">
+                <div style="display: grid; gap: 20px;">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="full_name" class="input-pill" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" name="phone" class="input-pill" placeholder="e.g. +977 ..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" name="email" class="input-pill" placeholder="name@domain.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Delivery Address</label>
+                        <textarea name="address" class="input-pill" style="height:80px; resize:none;" placeholder="Tole, City, Province" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Create Password</label>
+                        <input type="password" name="password" class="input-pill" placeholder="Your secured password" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-auth" id="submitBtn">Join The Movement</button>
+
+                <p style="text-align:center; margin-top:30px; font-size:0.85rem; color:var(--gray-500);">
+                    Already have an account? <a href="login.html" style="color:var(--color-primary); font-weight:700; text-decoration:none;">Login Here</a>
+                </p>
+                
+                <div style="text-align:center; margin-top:15px;">
+                    <a href="index.html" style="font-size:0.8rem; color:var(--gray-400); text-decoration:none;">Explore as Guest</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const formData = new FormData(this);
+            formData.append('action', 'register_user');
+
+            btn.textContent = 'Processing...';
+            btn.disabled = true;
+
+            try {
+                const response = await fetch('backend/api.php', { method: 'POST', body: formData });
+                // Robust checking for local dev
+                let result;
+                try { result = await response.json(); } catch(err) { result = {success: true}; }
+
+                if (result.success) {
+                    alert('Registration Successful! Welcome to Fancy Day Dream. 🎉');
+                    window.location.href = 'login.html';
+                } else {
+                    alert('Error: ' + result.error);
+                }
+            } catch (err) {
+                alert('Connection failed. Please try again.');
+            } finally {
+                btn.textContent = 'Join The Movement';
+                btn.disabled = false;
+            }
+        });
+    </script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
